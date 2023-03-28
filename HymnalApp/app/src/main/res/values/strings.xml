@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Hymnal-App</string>
+    <string name="open">Open Navigation Drawer</string>
+    <string name="close">Close Navigation Drawer</string>
+    <string name="search">Search</string>
+    <string name="home">Home</string>
+    <string name="about">About</string>
+    <string name="ludo_game">Ludo Game</string>
+    <string name="exit">Exit</string>
+
+    <string-array name="title_book">
+        <item>Book1</item>
+        <item>Book2</item>
+        <item>Book3</item>
+        <item>Book4</item>
+        <item>Book5</item>
+        <item>Book6</item>
+        <item>Book7</item>
+        <item>Book8</item>
+        <item>Book9</item>
+        <item>Book10</item>
+        <item>Book11</item>
+        <item>Book12</item>
+        <item>Book13</item>
+        <item>Book14</item>
+        <item>Book15</item>
+    </string-array>
+
+    <string-array name="details_book">
+        <item>B1</item>
+        <item>B2</item>
+        <item>B3</item>
+        <item>B4</item>
+        <item>B5</item>
+        <item>B6</item>
+        <item>B7</item>
+        <item>B8</item>
+        <item>B9</item>
+        <item>B10</item>
+        <item>B11</item>
+        <item>B12</item>
+        <item>B13</item>
+        <item>B14</item>
+        <item>B15</item>
+    </string-array>
+</resources>

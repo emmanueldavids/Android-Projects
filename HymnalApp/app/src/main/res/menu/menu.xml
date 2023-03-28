@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/About"
+            android:icon="@drawable/people_icon"
+            android:title="About"/>
+
+        <item android:id="@+id/favorite"
+            android:icon="@drawable/favorite_icon"
+            android:title="Favorite"/>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/share"
+            android:icon="@drawable/share_icon"
+            android:title="Share"/>
+
+        <item android:id="@+id/game"
+            android:icon="@drawable/game_icon"
+            android:title="@string/ludo_game"/>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/exit"
+            android:icon="@drawable/exit_icon"
+            android:title="@string/exit"/>
+    </group>
+</menu>
