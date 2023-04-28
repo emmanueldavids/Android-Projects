@@ -129,12 +129,12 @@
                     android:id="@+id/playPauseCard"
                     android:layout_width="90dp"
                     android:layout_height="100dp"
-                    app:cardBackgroundColor="#7960E5"
+                    app:cardBackgroundColor="#FF0000"
                     app:cardUseCompatPadding="true"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="10dp"
-                    android:outlineAmbientShadowColor="#7960E5"
-                    android:outlineSpotShadowColor="#7960E5">
+                    android:outlineAmbientShadowColor="#FF0000"
+                    android:outlineSpotShadowColor="#FF0000">
                     
                     <ImageView
                         android:id="@+id/playPauseImg"
