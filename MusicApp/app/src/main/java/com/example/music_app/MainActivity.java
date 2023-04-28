@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements SongChangeListene
         prevBnt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int prevSongListPosition = currentSongListPosition+1;
+                int prevSongListPosition = currentSongListPosition-1;
 
                 if (prevSongListPosition < 0){
                     prevSongListPosition = musicLists.size()-1; // play last or previous song
@@ -237,13 +237,15 @@ public class MainActivity extends AppCompatActivity implements SongChangeListene
         new Thread(new Runnable() {
             @Override
             public void run() {
+
                 try {
                     mediaPlayer.setDataSource(MainActivity.this, musicLists.get(position).getMusicFile());
                     mediaPlayer.prepare();
                 } catch (IOException e) {
-                    e.printStackTrace();
                     Toast.makeText(MainActivity.this, "Can't Play Track", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
         }).start();
 
@@ -281,7 +283,7 @@ public class MainActivity extends AppCompatActivity implements SongChangeListene
                                 TimeUnit.MILLISECONDS.toSeconds(getCurrentDuration) -
                                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(getCurrentDuration)));
 
-                        playerSeekBar.getProgress();//getCurrentDuration
+                        playerSeekBar.setProgress(getCurrentDuration);//getCurrentDuration
                         startTime.setText(generateDuration);
 
                     }
@@ -300,7 +302,7 @@ public class MainActivity extends AppCompatActivity implements SongChangeListene
                 isPlaying = false;
 
                 playPauseImg.setImageResource(R.drawable.play_icon);
-                playerSeekBar.getProgress();
+                playerSeekBar.setProgress(0);
             }
         });
     }
