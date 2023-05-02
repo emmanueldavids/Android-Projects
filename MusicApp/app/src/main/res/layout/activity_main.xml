@@ -1,60 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
+    android:id="@+id/drawer_layout"
     tools:context=".MainActivity">
 
     <RelativeLayout
-        android:id="@+id/topBar"
-        android:paddingBottom="12dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:id="@+id/searchBtn"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_back_10">
-
-            <ImageView
-                android:layout_margin="10dp"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/search_icon"/>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Music Player"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:id="@+id/menuBtn"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_back_10">
-
-
-            <ImageView
-                android:layout_margin="10dp"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/menu_icon"/>
-        </LinearLayout>
-    </RelativeLayout>
-        
+        android:layout_height="match_parent">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/musicRecycleView"
             android:layout_marginBottom="10dp"
@@ -79,7 +35,7 @@
                 <TextView
                     android:id="@+id/startTime"
                     android:textColor="#FFFFFF"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:layout_marginStart="10dp"
                     android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
@@ -101,7 +57,7 @@
                 <TextView
                     android:id="@+id/EndTime"
                     android:textColor="#FFFFFF"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
                     android:layout_alignParentEnd="true"
@@ -155,4 +111,13 @@
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/menu" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 

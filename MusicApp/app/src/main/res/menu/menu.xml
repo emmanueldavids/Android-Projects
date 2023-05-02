@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+   <group android:checkableBehavior="single">
+        <item android:id="@+id/rateUs"
+            android:icon="@drawable/rating_bar_icon"
+            android:title="Rate Me"/>
+
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/exit"
+            android:icon="@drawable/exit_icon"
+            android:title="Exit"/>
+    </group>
+</menu>

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Music-App</string>
     <string name="song_chat">Song Chat</string>
+    <string name="open">Open Navigation Drawer</string>
+    <string name="close">Close Navigation Drawer</string>KolMusic Muskol
+    <string name="rate_now">Rate Now</string>
 </resources>

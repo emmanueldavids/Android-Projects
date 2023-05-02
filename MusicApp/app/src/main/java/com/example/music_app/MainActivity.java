@@ -7,14 +7,18 @@ import android.app.DownloadManager;
 import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.ImageView;
@@ -24,22 +28,33 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements SongChangeListener{
+
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    ActionBarDrawerToggle drawerToggle;
 
     private final List<MusicList> musicLists = new ArrayList<>();
     private RecyclerView musicRecycleView;
@@ -51,7 +66,49 @@ public class MainActivity extends AppCompatActivity implements SongChangeListene
     private Timer timer;
     private int currentSongListPosition = 0;
     private MusicAdapter musicAdapter;
+    SearchView searchView;
 
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (drawerToggle.onOptionsItemSelected(item))
+        {
+            return true;
+        }
+//search code
+        int id = item.getItemId();
+        if (id ==  R.id.action_search){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    /*@Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menusearch,menu);
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+        searchView.setQueryHint("Search Here...");
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                String searchStr = newText;
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+     */
+
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +119,6 @@ public class MainActivity extends AppCompatActivity implements SongChangeListene
 
 
 
-        final LinearLayout SearchBtn = findViewById(R.id.searchBtn);
-        final LinearLayout menuBtn = findViewById(R.id.menuBtn);
         musicRecycleView = findViewById(R.id.musicRecycleView);
         final CardView playPauseCard = findViewById(R.id.playPauseCard);
         playPauseImg = findViewById(R.id.playPauseImg);
@@ -72,6 +127,40 @@ public class MainActivity extends AppCompatActivity implements SongChangeListene
         startTime = findViewById(R.id.startTime);
         endTime = findViewById(R.id.EndTime);
         playerSeekBar = findViewById(R.id.playerSeekBar);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open,R.string.close);
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        navigationView.setNavigationItemSelectedListener(item -> {
+            switch (item.getItemId())
+            {
+                case R.id.rateUs:
+                {
+                    //show rating dialog
+                    RateUs rateUs = new RateUs(MainActivity.this);
+                    rateUs.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+                    rateUs.setCancelable(false);
+                    rateUs.show();
+                    Toast.makeText(MainActivity.this,"Rate Selected", Toast.LENGTH_LONG).show();
+                    break;
+                }
+
+                case R.id.exit:
+                {
+                    finish();
+                    Toast.makeText(MainActivity.this,"Good Bye User!!", Toast.LENGTH_LONG).show();
+                    break;
+                }
+
+            }
+            return false;
+        });
+    //has remove } from here
+
 
         musicRecycleView.setHasFixedSize(true);
         musicRecycleView.setLayoutManager(new LinearLayoutManager(this));
@@ -167,6 +256,11 @@ public class MainActivity extends AppCompatActivity implements SongChangeListene
         });
 
     }
+
+    public SearchView getSearchView() {
+        return searchView;
+    }
+
     @SuppressLint("Range")
     private void getMusicFiles(){
         ContentResolver contentResolver = getContentResolver();
@@ -306,4 +400,16 @@ public class MainActivity extends AppCompatActivity implements SongChangeListene
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START))
+        {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
+
 }
