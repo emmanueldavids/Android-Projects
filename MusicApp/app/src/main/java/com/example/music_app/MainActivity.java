@@ -83,34 +83,24 @@ public class MainActivity extends AppCompatActivity implements SongChangeListene
         return super.onOptionsItemSelected(item);
     }
 
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menusearch,menu);
-        MenuItem menuItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) menuItem.getActionView();
-        searchView.setMaxWidth(Integer.MAX_VALUE);
-        searchView.setQueryHint("Search Here...");
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                String searchStr = newText;
-                return false;
-            }
-        });
+        getMenuInflater().inflate(R.menu.menu,menu);
 
         return super.onCreateOptionsMenu(menu);
     }
 
-     */
+
 
     @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//        Intent intent = new Intent(Intent.ACTION_SEND);
+//        intent.setType("text/plain");
+//        intent.putExtra(Intent.EXTRA_SUBJECT,"This is my app");
+//        intent.putExtra(Intent.EXTRA_SUBJECT,"App link here");
+//        startActivity(Intent.createChooser(intent, "share via"));
+
         super.onCreate(savedInstanceState);
         View decorderView = getWindow().getDecorView();
         int options = View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
@@ -146,6 +136,18 @@ public class MainActivity extends AppCompatActivity implements SongChangeListene
                     rateUs.setCancelable(false);
                     rateUs.show();
                     Toast.makeText(MainActivity.this,"Rate Selected", Toast.LENGTH_LONG).show();
+                    break;
+                }
+
+                case R.id.share:
+                {
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_SUBJECT,"This is my app");
+                    intent.putExtra(Intent.EXTRA_SUBJECT,"App link here");
+                    startActivity(Intent.createChooser(intent, "share via"));
+                    finish();
+                    Toast.makeText(MainActivity.this,"Share Selected", Toast.LENGTH_LONG).show();
                     break;
                 }
 

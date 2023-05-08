@@ -1,5 +1,8 @@
 package com.example.music_app;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -8,7 +11,9 @@ import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
@@ -30,14 +35,31 @@ public class RateUs extends Dialog {
         final AppCompatButton laterBtn = findViewById(R.id.laterBtn);
         final RatingBar ratingBar = findViewById(R.id.ratingBar);
         final ImageView ratingImage = findViewById(R.id.ratingImage);
+        final TextView dialog = findViewById(R.id.dialog);
 
-        rateNowBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //code goes here
 
-            }
-        });
+//        rateNowBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //code goes here
+//                builder.setMessage("").setTitle("");
+//                builder.setMessage("Do you want to exit this Application?")
+//                        .setCancelable(false)
+//                        .setPositiveButton("Yes", (dialog, id) -> {
+//                            finish();
+//                            Toast.makeText(getApplicationContext(),"You choose Yes action AlertBox", Toast.LENGTH_LONG).show();
+//                        })
+//                        .setNegativeButton("No", (dialog, id) ->{
+//                            dialog.cancel();
+//
+//                            Toast.makeText(getApplicationContext(),"You choose No action AlertBox", Toast.LENGTH_LONG).show();
+//                        });
+//                AlertDialog alert = builder.create();
+//                alert.setTitle("SoftwareAlertMessage");
+//                alert.show();
+//            }
+//
+//        });
 
         laterBtn.setOnClickListener(new View.OnClickListener() {
             @Override

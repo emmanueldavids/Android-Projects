@@ -11,4 +11,6 @@
 
     <color name="dialog_color_1">#FDD736</color>
     <color name="dialog_color_2">#3B5796</color>
+    <color name="lavender">#8692f7</color>
+    <color name="green">#6AB16D</color>
 </resources>

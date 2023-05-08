@@ -10,6 +10,12 @@
     </group>
 
     <group android:checkableBehavior="single">
+        <item android:id="@+id/share"
+            android:icon="@drawable/share_icon"
+            android:title="Share"/>
+    </group>
+
+    <group android:checkableBehavior="single">
         <item android:id="@+id/exit"
             android:icon="@drawable/exit_icon"
             android:title="Exit"/>
